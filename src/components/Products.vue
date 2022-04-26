@@ -4,26 +4,26 @@
 		<b-container fluid class="bv-example-row mt-4">
 		
 		<b-row >
-			<b-col cols="3" v-for="(fruit,index) in fruits" :key="index">
+			<b-col cols="3" v-for="(book,index) in books" :key="index">
 				        <b-card
-					:title=fruit.name
-					:img-src="require(`@/assets/img/books/book${index+1}.jpeg`)"
+					:title=book.name
+					:img-src="require(`@/assets/img/books/book${index+1}.jpg`)"
 					img-alt="Image"
 					img-top
 					tag="article"
 					class="mb-4"
 				>
 					<b-card-text>
-						<h5>Price: ${{fruit.price}}.00</h5>
+						<h5>Price: {{book.price}} $</h5>
+						<!-- <b-icon variant="warning" class="h1" icon="star-fill"></b-icon>
 						<b-icon variant="warning" class="h1" icon="star-fill"></b-icon>
 						<b-icon variant="warning" class="h1" icon="star-fill"></b-icon>
 						<b-icon variant="warning" class="h1" icon="star-fill"></b-icon>
-						<b-icon variant="warning" class="h1" icon="star-fill"></b-icon>
-						<b-icon variant="warning" class="h1" icon="star-fill"></b-icon>
+						<b-icon variant="warning" class="h1" icon="star-fill"></b-icon> -->
 					</b-card-text>
 				
-					<b-button v-if="!fruit.cart" :disabled="fruit.cart" @click="fruit.cart=true, addtocart(JSON.parse(JSON.stringify(fruit)))" block href="#" variant="success">Dodaj do listy</b-button>
-					<b-button v-if="fruit.cart" :disabled="fruit.cart" block href="#" variant="warning">Dodano do listy </b-button>
+					<b-button v-if="!book.cart" :disabled="book.cart" @click="book.cart=true, addtocart(JSON.parse(JSON.stringify(book)))" block href="#" variant="success">Add to Cart</b-button>
+					<b-button v-if="book.cart" :disabled="book.cart" block href="#" variant="warning">Already added to cart </b-button>
 				</b-card>
 			</b-col>
 			
@@ -40,69 +40,69 @@ export default {
 	
 	data() {
 		return {
-			fruits: [
+			books: [
 				{
 					id:1,
 					quantity:1,
-					name: 'Harry Potter i Kamień Filozoficzny. Tom 1',
-					price:21.61,
-					img: '@/assets/img/books/book1.jpeg',
+					name: 'Harry Potter and Philosophers Stone',
+					price:15.69,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:2,
 					quantity:1,
-					name: 'Harry Potter i Komnata Tajemnic. Tom 2 ',
-					price:21.70,
-					img: '@/assets/img/books/book2.jpeg',
+					name: 'Harry Potter and Chamber of Secrets',
+					price:17.99,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:3,
 					quantity:1,
-					name: 'Harry Potter i więzień Azkabanu. Tom 3',
-					price:23.93,
-					img: '@/assets/img/books/book3.jpeg',
+					name: 'Harry Potter and Prisoner of Azkaban',
+					price:18.09,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:4,
 					quantity:1,
-					name: 'Harry Potter i przeklęte dziecko. Część 1 i 2. Wydanie poszerzone',
-					price:27.56,
-					img: '@/assets/img/books/book4.jpeg',
+					name: 'Harry Potter and Goblet of Fire',
+					price:17.59,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:5,
 					quantity:1,
-					name: 'Quidditch przez wieki',
-					price:18.19,
-					img: '@/assets/img/books/book5.jpeg',
+					name: 'Harry Potter and Order of the Phoenix',
+					price:19.99,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:6,
 					quantity:1,
-					name: 'Niezbędnik maga z Domu Brooklyńskiego',
-					price:18.73,
-					img: '@/assets/img/books/book6.jpeg',
+					name: 'Harry Potter and Half-Blood Prince',
+					price:16.79,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:7,
 					quantity:1,
-					name: 'Tajne akta Obozu Jupiter. Dziennik rekrutki. Apollo i boskie próby',
-					price:20.62,
-					img: '@/assets/img/books/book7.jpeg',
+					name: 'Harry Potter and Deathly Hallows',
+					price:21.89,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:8,
 					quantity:1,
-					name: 'Królestwo Nikczemnych',
-					price:28.94,
-					img: '@/assets/img/books/book8.jpeg',
+					name: 'Harry Potter and the Cursed Child',
+					price:15.69,
+					img: '@/assets/books/book8.jpg',
 					cart:false
 				},
 			]
@@ -129,9 +129,9 @@ export default {
 			cart = []
 		}
 		for (let index = 0; index < cart.length; index++) {
-			for (let index2 = 0; index2 < this.fruits.lenght; index2++){
-				if (cart[index].id == this.fruits[index2].id) {
-					this.fruits[index2].cart=true
+			for (let index2 = 0; index2 < this.books.lenght; index2++){
+				if (cart[index].id == this.books[index2].id) {
+					this.books[index2].cart=true
 				}
 				
 			}

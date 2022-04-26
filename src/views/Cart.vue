@@ -5,7 +5,7 @@
 
  <b-row>
      <b-col>
-        <h2> Lista zakupów </h2>
+        <h2> Shopping Cart </h2>
      </b-col>
  </b-row>
 
@@ -18,7 +18,7 @@
         {{ data.index+1 }}
         </template>
             <template v-slot:cell(price)="data">
-        {{ data.item.price * data.item.quantity }}
+        {{ data.item.price * data.item.quantity }} $
         </template>
         <template v-slot:cell(remove)="data">
         <b-button @click="remove(data.item.id)" variant="danger" class="mr-2">
@@ -48,7 +48,7 @@
 
      <template v-slot:cell(image)="data">
     <b-col class="text-center">
-        <b-img style="max-width: 5rem;" :src="require(`@/assets/img/books/book${data.item.id}.jpeg`)" fluid alt="Responsive image"></b-img>
+        <b-img style="max-width: 5rem;" :src="require(`@/assets/img/books/book${data.item.id}.jpg`)" fluid alt="Responsive image"></b-img>
     </b-col>
 
     </template>
@@ -62,51 +62,50 @@
     <b-col></b-col>
     <b-col></b-col>
     <b-col></b-col>
-    <b-col><h3>Łaczna suma</h3></b-col>
-    <b-col><h3>$ {{total}} </h3></b-col>
+    <b-col><h3>Total</h3></b-col>
+    <b-col><h3>{{total}} $ </h3></b-col>
 </b-row>
 <b-row class="mt-4 text-center" v-if="cart.length > 0">
     <b-col>
         <b-button @click="clean" variant="info" block class="mr-2">
-        Wyczyść listę
+        Clean
         </b-button>
     </b-col>
 <b-col></b-col>
-<b-col cols="4"> Aplikacja </b-col>
+<!-- <b-col cols="4"> Aplikacja </b-col> -->
 
 <b-col>
 
 </b-col>
 <b-col>
     <b-button   @click="buy" variant="success" block class="mr-2">
-        Kup produkty z listy
+        Buy
     </b-button>
 </b-col>
 </b-row>
-<b-modal hide-header-close no-close-on-esc no-close-on-backdrop ref="modal-1" centered title="Lista zakupów ">
+<b-modal hide-header-close no-close-on-esc no-close-on-backdrop ref="modal-1" centered title="Purchase Completed ">
 <template slot="modal-footer">
-<b-button class="mt-3" variant="info" block @click="clean">Potwierdź zamówienie i zamknij</b-button>
+<b-button class="mt-3" variant="info" block @click="clean">Confirm</b-button>
 
 
     </template>
-
-<p class="mb-4">Produkty:</p>
+<p class="mb-4">Products:</p>
 <ul v-for="productFinal in ticket.products" :key="productFinal.id">
 <li>
-Nazwa: {{productFinal.name}}
+Product name: {{productFinal.name}}
 </li>
 <li>
-Ilość: {{productFinal.quantity}}
+Quantity: {{productFinal.quantity}}
 </li>
 <li>
-Cena: {{productFinal.price}}
+Price: {{productFinal.price}} $
 </li>
 <li>
-Suma: {{productFinal.price * productFinal.quantity}}
+Total: {{productFinal.price * productFinal.quantity}} $
 </li>
 <hr>
 </ul>
-<h2 class="my-4 text-center">Łaczna suma do zapłaty: ${{ ticket.total}}</h2>
+<h2 class="my-4 text-center">Total: {{ ticket.total}} $</h2>
 
 
 </b-modal>
@@ -146,9 +145,6 @@ export default {
             }
             localStorage.setItem('products',JSON.stringify(this.cart))
             this.$refs['modal-1'].hide()
-            if(navigator){
-				navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100])
-			}
         },
         remove(id){
 

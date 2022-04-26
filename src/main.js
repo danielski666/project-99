@@ -3,19 +3,25 @@ import App from './App.vue'
 import router from './router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import { BootstrapVue} from 'bootstrap-vue'
-import store from "./store";
-
-// Make BootstrapVue available throughout your project
+import {BootstrapVue} from 'bootstrap-vue'
+import { BootstrapIconsPlugin } from 'bootstrap-icons-vue';
+import firebase from 'firebase/compat/app';
+import 'leaflet/dist/leaflet.css';
+//install bootstrapVue
 Vue.use(BootstrapVue)
-// Optionally install the BootstrapVue icon components plugin
-// Vue.use(BootstrapVueIcons)
+//Optionally install the BootstrapVue icon components plugin
+Vue.use(BootstrapIconsPlugin)
 Vue.config.productionTip = false
 
-
-
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+let app;
+firebase.auth().onAuthStateChanged(function(user) {
+  if (!app) {
+    /* eslint-disable no-new */
+    app = new Vue({
+      el: '#app',
+      router,
+      template: '<App/>',
+      components: { App }
+    });
+  }
+});

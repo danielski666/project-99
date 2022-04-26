@@ -7,7 +7,7 @@
 						<h5>Id: {{ data.item.id}}</h5>
 						<ul v-for="(product, index) in data.item.products" :key="index">
 							<li>Name: {{ product.name }}</li>
-							<li>Price: {{ product.price }}</li>
+							<li>Price: {{ product.price }} $</li>
 							<li>Quantity: {{ product.quantity }}</li>
 							
 							<hr />

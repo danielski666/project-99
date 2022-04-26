@@ -1,112 +1,62 @@
 <template>
-<div>
-<navbar />
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Zarejestruj się</div>
-          <div class="card-body">
-            <div v-if="error" class="alert alert-danger">{{error}}</div>
-            <form action="#" @submit.prevent="submit">
-              <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right">Nazwa użytkownika</label>
+  <div>
+  <navbar />
 
-                <div class="col-md-6">
-                  <input
-                    id="name"
-                    type="name"
-                    class="form-control"
-                    name="name"
-                    value
-                    required
-                    autofocus
-                    v-model="form.name"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
-
-                <div class="col-md-6">
-                  <input
-                    id="email"
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    value
-                    required
-                    autofocus
-                    v-model="form.email"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="password" class="col-md-4 col-form-label text-md-right">Hasło</label>
-
-                <div class="col-md-6">
-                  <input
-                    id="password"
-                    type="password"
-                    class="form-control"
-                    name="password"
-                    required
-                    v-model="form.password"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-4">
-                  <button type="submit" class="btn btn-primary">Zarejestruj się</button>
-                </div>
-              </div>
-            </form>
-          </div>
+    <div class="container">
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="login card-panel grey lighten-4 black-text center">
+          <h3>Register</h3>
+          <form action="index.html">
+            <div class="input-field">
+              <i class="material-icons prefix">email</i>
+              <input type="email" id="email" v-model="email">
+              <label for="email">Email Address</label>
+            </div>
+            <div class="input-field">
+              <i class="material-icons prefix">lock</i>
+              <input type="password" id="password" v-model="password">
+              <label for="password">Password</label>
+            </div>
+            <button v-on:click="register" class="btn btn-large btn-extended grey lighten-4 black-text">Register</button>
+          </form>
         </div>
       </div>
     </div>
   </div>
-</div>
+  </div>
 </template>
-
 
 <script>
 import firebase from 'firebase/compat/app';
 import navbar from '@/components/Navbar.vue'
-
 export default {
-    name: 'Register',
-    components: {
+  name: 'register',
+  components: {
         navbar
     },
-  data() {
+  data: function() {
     return {
-      form: {
-        name: "",
-        email: "",
-        password: ""
-      },
-      error: null
+      email: '',
+      password: ''
     };
   },
   methods: {
-    submit() {
+    register: function(e) {
       firebase
         .auth()
-        .createUserWithEmailAndPassword(this.form.email, this.form.password)
-        .then(data => {
-          data.user
-            .updateProfile({
-              displayName: this.form.name
-            })
-            .then(() => {});
-        })
-        .catch(err => {
-          this.error = err.message;
-        });
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(
+          user => {
+            // console.log(user);
+            alert(`Account Created for ${user.email}`);
+            this.$router.go({ path: this.$router.path });
+          },
+          err => {
+            alert(err.message);
+          }
+        );
+      e.preventDefault();
     }
   }
 };

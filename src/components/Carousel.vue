@@ -22,7 +22,7 @@
 			  <img
 				class="d-block img-fluid w-100"
 				style="height:80vh!important;"
-				:src="require('@/assets/img/library3.jpg')"
+				:src="require('@/assets/img/banner3.jpg')"
 				alt="image slot"
 			  >
 			</template>
@@ -32,7 +32,7 @@
 			  <img
 				class="d-block img-fluid w-100"
 				style="height:80vh!important;"
-				:src="require('@/assets/img/library2.jpg')"
+				:src="require('@/assets/img/banner2.jpg')"
 				alt="image slot"
 			  >
 			</template>
@@ -42,7 +42,7 @@
 			  <img
 				class="d-block img-fluid w-100"
 				style="height:80vh!important;"
-				:src="require('@/assets/img/library1.jpg')"
+				:src="require('@/assets/img/banner.jpg')"
 				alt="image slot"
 			  >
 			</template>
