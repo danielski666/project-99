@@ -1,5 +1,6 @@
 module.exports = {
   transpileDependencies: true,
   lintOnSave: false,
-  runtimeCompiler: true
+  runtimeCompiler: true,
+  publicPath: process.env.NODE_ENV === "production" ? "/project-99/" : "/",
 }
