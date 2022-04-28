@@ -1,4 +1,6 @@
 <template>
+<div class="text-center">
+<h3>Location our shop: Poland, Krakow, street Rakowicka 27 is present at below map.</h3>
   <div style="height: 100%; width: 100%">
     <l-map
       class="ma-auto col-12"
@@ -16,6 +18,7 @@
       
     </l-map>
   </div>
+</div>
 </template>
 <script>
 import { Icon } from 'leaflet';

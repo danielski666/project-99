@@ -5,6 +5,7 @@ import Cart from '../views/Cart.vue'
 import Admin from '../views/Admin.vue'
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
+import RealTime from '../views/realtime.vue';
 import firebase from 'firebase/compat/app';
 Vue.use(VueRouter)
 
@@ -49,6 +50,14 @@ const routes = [
         requiresAuth: true
       }
   },
+  {
+    path: '/realTime',
+    name: 'realTime',
+    component: RealTime,
+    meta: {
+        requiresAuth: true
+      }
+  }
 ]
 
 const router = new VueRouter({

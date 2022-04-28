@@ -2,9 +2,9 @@
 	<div>
 		<NavbarAdmin />
 			<b-container class="mt-4" fluid>
-				<b-table :busy="busy" bordered :fields="fields" hover :items="items">
+				<b-table fixed :busy="busy" bordered :fields="fields" hover :items="items" style="white-space: pre-line;">
 					<template v-slot:cell(products)="data">
-						<h5>Id: {{ data.item.id}}</h5>
+						<h5>Id: {{ data.item.id.substring(0,9)}}</h5>
 						<ul v-for="(product, index) in data.item.products" :key="index">
 							<li>Name: {{ product.name }}</li>
 							<li>Price: {{ product.price }} $</li>
@@ -14,7 +14,7 @@
 						</ul>
 					</template>
 					<template v-slot:cell(total)="data">
-						<h2>$ {{ data.item.total }}.00</h2>
+						<h2>$ {{ data.item.total }}</h2>
 					</template>
 					<template v-slot:cell(delete)="data">
 						<b-button @click="deletesale(data.item.id)" block class="mt-4" style="top:50%!important;" size="lg" variant="danger">Delete Sale</b-button>
@@ -40,9 +40,9 @@ export default {
 			busy: true,
 			items: [],
 			fields: [
-				{key: "products", label: "Sales"},
-				{key: "total", label: "Total"},
-				{key: "delete", label: "Delete"}
+				{key: "products", label: "Sales", tdClass: 'field1'},
+				{key: "total", label: "Total", tdClass: 'field2'},
+				{key: "delete", label: "Delete", tdClass: 'field3'}
 			]
 		};
 	},
@@ -80,4 +80,14 @@ export default {
 </script>
 
 <style>
+.field1 {
+   width: 70%;
+}
+.field2 {
+   width: 20%;
+}
+.field3 {
+   width: 10%;
+
+}
 </style>

@@ -11,14 +11,14 @@
 
 
 <b-row>
-    <b-col class="text-center">
-        <b-table bordered  hover :items="cart" :fields="fields">
+<b-col sm="12" class="text-center">
+        <b-table fixed bordered hover :items="cart" :fields="fields">
 
-            <template v-slot:cell(#)="data">
+        <template v-slot:cell(#)="data">
         {{ data.index+1 }}
         </template>
-            <template v-slot:cell(price)="data">
-        {{ data.item.price * data.item.quantity }} $
+        <template v-slot:cell(price)="data">
+        {{ (data.item.price * data.item.quantity).toFixed(2) }} $
         </template>
         <template v-slot:cell(remove)="data">
         <b-button @click="remove(data.item.id)" variant="danger" class="mr-2">
@@ -27,35 +27,29 @@
         </template>
         <template v-slot:cell(quantity)="data">
         <b-row>
-            <b-col cols="3" class="text-center">
+            <b-col md="3" sm="12" class="text-center">
             <b-button :disabled="data.item.quantity <=1" variant="primary" @click="decrement(data.item.id)" class="mr-2">
         -
             </b-button>
         </b-col>
-        <b-col cols="6" class="text-center">
+        <b-col md="6" sm="12" class="text-center">
             <h4>{{data.item.quantity}}</h4>
         </b-col>
-        <b-col cols="3" class="text-center">
+        <b-col md="3" sm="12" class="text-center">
             <b-button variant="primary" @click="increment(data.item.id)" class="mr-2">
         +
             </b-button>
         </b-col>
         </b-row>
-
-
-
     </template>
 
      <template v-slot:cell(image)="data">
-    <b-col class="text-center">
-        <b-img style="max-width: 5rem;" :src="require(`@/assets/img/books/book${data.item.id}.jpg`)" fluid alt="Responsive image"></b-img>
-    </b-col>
-
+        <b-img style="max-width: 3rem;" :src="require(`@/assets/img/books/book${data.item.id}.jpg`)" fluid alt="Responsive image"></b-img>
     </template>
 
 </b-table>
-
 </b-col>
+
 </b-row>
 <b-row class="text-center" v-if="cart.length > 0">
     <b-col></b-col>
@@ -63,7 +57,7 @@
     <b-col></b-col>
     <b-col></b-col>
     <b-col><h3>Total</h3></b-col>
-    <b-col><h3>{{total}} $ </h3></b-col>
+    <b-col><h3>{{total.toFixed(2)}} $ </h3></b-col>
 </b-row>
 <b-row class="mt-4 text-center" v-if="cart.length > 0">
     <b-col>
@@ -98,14 +92,14 @@ Product name: {{productFinal.name}}
 Quantity: {{productFinal.quantity}}
 </li>
 <li>
-Price: {{productFinal.price}} $
+Price: {{productFinal.price.toFixed(2)}} $
 </li>
 <li>
-Total: {{productFinal.price * productFinal.quantity}} $
+Total: {{ (productFinal.price * productFinal.quantity).toFixed(2)}} $
 </li>
 <hr>
 </ul>
-<h2 class="my-4 text-center">Total: {{ ticket.total}} $</h2>
+<h2 class="my-4 text-center">Total: {{ ticket.total.toFixed(2)}} $</h2>
 
 
 </b-modal>

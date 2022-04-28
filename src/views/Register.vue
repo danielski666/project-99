@@ -3,22 +3,28 @@
   <navbar />
 
     <div class="container">
-    <div class="row">
-      <div class="col s12 m8 offset-m2">
-        <div class="login card-panel grey lighten-4 black-text center">
-          <h3>Register</h3>
+    <br/>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header"  align="center"><h4>Register</h4></div>
+          <br/>
           <form action="index.html">
-            <div class="input-field">
+            <div class="input-field" align="center">
               <i class="material-icons prefix">email</i>
-              <input type="email" id="email" v-model="email">
-              <label for="email">Email Address</label>
+              <input type="email" id="email" v-model="email" placeholder="Email Address">
+              <label for="email" ></label>
             </div>
-            <div class="input-field">
+            <div class="input-field" align="center">
               <i class="material-icons prefix">lock</i>
-              <input type="password" id="password" v-model="password">
-              <label for="password">Password</label>
+              <input type="password" id="password" v-model="password" placeholder="Password">
+              <label for="password"></label>
             </div>
-            <button v-on:click="register" class="btn btn-large btn-extended grey lighten-4 black-text">Register</button>
+            <br/>
+            <div align="center">
+            <b-button variant="success" v-on:click="register" >Register</b-button>
+            </div>
+            <br/>
           </form>
         </div>
       </div>

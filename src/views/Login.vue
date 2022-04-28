@@ -5,28 +5,62 @@
 
 
     <div class="container">
-    <div class="row">
-      <div class="col s12 m8 offset-m2">
-        <div class="login card-panel green white-text center">
-          <h3>Login</h3>
+    <br/>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header"  align="center"><h4>Login</h4></div>
+          <br/>
           <form action="index.html">
-            <div class="input-field">
+            <div class="input-field" align="center">
               <i class="material-icons prefix">email</i>
-              <input type="email" id="email" v-model="email">
-              <label class="white-text" for="email">Email Address</label>
+              <input type="email" id="email" v-model="email" placeholder="Email Address">
+              <label for="email" ></label>
             </div>
-            <div class="input-field">
+            <div class="input-field" align="center">
               <i class="material-icons prefix">lock</i>
-              <input type="password" id="password" v-model="password">
-              <label class="white-text" for="password">Password</label>
+              <input type="password" id="password" v-model="password" placeholder="Password">
+              <label for="password"></label>
             </div>
-            <button v-on:click="login" class="btn btn-large btn-extended grey lighten-4 black-text">Login</button>
+            <br/>
+            <div align="center">
+            <b-button variant="success" v-on:click="login" >Login</b-button>
+            </div>
+            <br/>
           </form>
+          <br/>
+
+          <b-container>
+          <b-row>
+          
+          <b-col>
+            <p align="center">
+            <img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/google_original_logo_icon_146496.png" class="img-fluid" alt="Responsive image" style="width:20%">
+            <br>
+            <b-button type="button" @click="socialLoginGmail" variant="success">
+            Login via Gmail Account
+            </b-button>
+            </p>
+          </b-col>
+
+          <b-col>
+            <p align="center">
+            <img src="http://fabrykapalet.com/wp-content/uploads/2017/02/logo-facebook.png" class="img-fluid" alt="Responsive image" style="width:20%">
+            <br/>
+            <b-button type="button" @click="socialLoginFacebook" variant="success">
+            Login via Facebook
+            </b-button>
+            </p>
+          </b-col>
+          </b-row>
+          </b-container>
+
+  </div>
+  </div>
         </div>
       </div>
-    </div>
-  </div>
-  </div>
+    </div> 
+    
 </template>
 
 <script>
@@ -58,7 +92,71 @@ export default {
           }
         );
       e.preventDefault();
+    },
+    socialLoginGmail(){
+      const provider = new firebase.auth.GoogleAuthProvider();
+
+      firebase.auth().signInWithPopup(provider).then((result)  => {
+          alert('successfully logged in with google account !')
+          this.$router.push('/')
+      })
+      .catch(err => {
+          alert('Error logging ..'+ err.message)
+          });
+    },
+    /*
+        async logInWithFacebook() {
+      await this.loadFacebookSDK(document, "script", "facebook-jssdk");
+      await this.initFacebook();
+      window.FB.login(function(response) {
+        if (response.authResponse) {
+          alert("You are logged in &amp; cookie set!");
+          // Now you can redirect the user or do an AJAX request to
+          // a PHP script that grabs the signed request from the cookie.
+        } else {
+          alert("User cancelled login or did not fully authorize.");
+        }
+      });
+      return false;
+    },
+    async initFacebook() {
+      window.fbAsyncInit = function() {
+        window.FB.init({
+          appId: "3-090-9", //You will need to change this
+          cookie: true, // This is important, it's not enabled by default
+          version: "v13.0"
+        });
+      };
+    },
+    async loadFacebookSDK(d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    } */
+    socialLoginFacebook(){
+      const provider = new firebase.auth.FacebookAuthProvider();
+      provider.setCustomParameters({
+      'display': 'popup'
+      });
+      
+      firebase.auth().signInWithPopup(provider).then((result)  => {
+          const user = result.user;
+          const credential = FacebookAuthProvider.credentialFromResult(result);
+          const accessToken = credential.accessToken;
+          alert('Użytkownik zalogowany poprzez konto facebook !')
+          this.$router.push('/')
+      })
+      .catch(err => {
+          alert('Błąd logowania ..'+ err.message)
+          });
     }
+    
   }
 };
 </script>

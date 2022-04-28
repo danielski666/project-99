@@ -6,12 +6,16 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import {BootstrapVue} from 'bootstrap-vue'
 import { BootstrapIconsPlugin } from 'bootstrap-icons-vue';
 import firebase from 'firebase/compat/app';
+//import firebaseMessaging from 'firebase/compat/messaging';
+
 import 'leaflet/dist/leaflet.css';
 //install bootstrapVue
 Vue.use(BootstrapVue)
 //Optionally install the BootstrapVue icon components plugin
 Vue.use(BootstrapIconsPlugin)
 Vue.config.productionTip = false
+
+//Vue.prototype.$messaging = firebaseMessaging
 
 let app;
 firebase.auth().onAuthStateChanged(function(user) {

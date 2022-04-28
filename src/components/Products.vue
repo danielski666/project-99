@@ -4,7 +4,7 @@
 		<b-container fluid class="bv-example-row mt-4">
 		
 		<b-row >
-			<b-col cols="3" v-for="(book,index) in books" :key="index">
+			<b-col sm="6" md="3" v-for="(book,index) in books" :key="index">
 				        <b-card
 					:title=book.name
 					:img-src="require(`@/assets/img/books/book${index+1}.jpg`)"

@@ -15,6 +15,8 @@
 					<b-nav-item v-if="isLoggedIn" @click="gotocart" active>Shopping Cart</b-nav-item>
 					<b-nav-item v-if="!isLoggedIn" @click="gotologin" active>Login</b-nav-item>
 					<b-nav-item v-if="!isLoggedIn" @click="gotoregister" active>Register</b-nav-item>
+					<b-nav-item v-if="isLoggedIn" @click="gotochat" active>Chat</b-nav-item>
+					<b-nav-item @click="flashlightFunc" active>Flashlight</b-nav-item>
 					<button v-if="isLoggedIn" v-on:click="logout" class="btn black">Logout</button>
 					<b-nav-item-dropdown right>
 						<!--Using 'button-content' slot-->
@@ -75,7 +77,30 @@
 
 <script>
 import firebase from 'firebase/compat/app';
+//import { inject } from 'vue';
 export default {
+	/*
+	inject: ['messaging'],
+  //composition api
+  setup() {
+	  app.messaging().getToken({ vapidKey:  'BC9E9EweLWoSortR7kVMtqCwYb58uN-AoGBpWZaW1qUL4YlgECl8tFqItm_00FhaVv2o9OXJTR_Gtn4EwWcx2RA' })
+.then((currentToken) => {
+  if (currentToken) {
+    console.log('client token', currentToken)
+  } else {
+    console.log('No registration token available. Request permission to generate one.');
+  }
+}).catch((err) => {
+  console.log('An error occurred while retrieving token. ', err);
+})
+
+    const messaging = inject('messaging')
+	messaging.getToken({ vapidKey:' BC9E9EweLWoSortR7kVMtqCwYb58uN-AoGBpWZaW1qUL4YlgECl8tFqItm_00FhaVv2o9OXJTR_Gtn4EwWcx2RA' })
+    console.log('Firebase cloud messaging object', messaging)
+  },
+  mounted () {
+    console.log('Firebase cloud messaging object', this.$messaging)
+  },*/
 	data() {
 		return {
 			isLoggedIn: false,
@@ -118,6 +143,56 @@ export default {
 		},
 		goHome(){
 			this.$router.push('/')
+		},
+		gotochat(){
+			this.$router.push('/realtime')
+		},
+		flashlightFunc(){
+const SUPPORTS_MEDIA_DEVICES = 'mediaDevices' in navigator;
+
+if (SUPPORTS_MEDIA_DEVICES) {
+  //Get the environment camera (usually the second one)
+  navigator.mediaDevices.enumerateDevices().then(devices => {
+  
+    const cameras = devices.filter((device) => device.kind === 'videoinput');
+
+    if (cameras.length === 0) {
+      throw 'No camera found on this device.';
+    }
+    const camera = cameras[cameras.length - 1];
+
+    // Create stream and get video track
+    navigator.mediaDevices.getUserMedia({
+      video: {
+        deviceId: camera.deviceId,
+        facingMode: ['user', 'environment'],
+        height: {ideal: 1080},
+        width: {ideal: 1920}
+      }
+    }).then(stream => {
+      const track = stream.getVideoTracks()[0];
+
+      //Create image capture object and get camera capabilities
+      const imageCapture = new ImageCapture(track)
+      const photoCapabilities = imageCapture.getPhotoCapabilities().then(() => {
+
+        //todo: check if camera has a torch
+
+        //let there be light!
+        const btn = document.querySelector('.switch');
+        btn.addEventListener('click', function(){
+          track.applyConstraints({
+            advanced: [{torch: true}]
+          });
+        });
+      });
+    });
+  });
+  
+  //The light will be on as long the track exists
+  
+  
+}				
 		},
 		onSubmit(e){
 			e.preventDefault();
