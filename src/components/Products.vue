@@ -1,33 +1,27 @@
 <template>
 	<div >
 	
-		<b-container fluid class="bv-example-row mt-4">
+		<b-container fluid>
 		
 		<b-row >
-			<b-col sm="6" md="3" v-for="(book,index) in books" :key="index">
-				        <b-card
+			<b-col sm="12" md="2" v-for="(book,index) in books" :key="index">
+				<b-card
 					:title=book.name
 					:img-src="require(`@/assets/img/books/book${index+1}.jpg`)"
 					img-alt="Image"
-					img-top
 					tag="article"
+					img-top
 					class="mb-4"
-				>
+					style="max-width: 12rem;"
+					>
 					<b-card-text>
-						<h5>Price: {{book.price}} $</h5>
-						<!-- <b-icon variant="warning" class="h1" icon="star-fill"></b-icon>
-						<b-icon variant="warning" class="h1" icon="star-fill"></b-icon>
-						<b-icon variant="warning" class="h1" icon="star-fill"></b-icon>
-						<b-icon variant="warning" class="h1" icon="star-fill"></b-icon>
-						<b-icon variant="warning" class="h1" icon="star-fill"></b-icon> -->
+						<h5>Price: {{book.price}} zł</h5>
 					</b-card-text>
 				
 					<b-button v-if="!book.cart" :disabled="book.cart" @click="book.cart=true, addtocart(JSON.parse(JSON.stringify(book)))" block href="#" variant="success">Add to Cart</b-button>
 					<b-button v-if="book.cart" :disabled="book.cart" block href="#" variant="warning">Already added to cart </b-button>
 				</b-card>
-			</b-col>
-			
-			
+			</b-col>	
 		</b-row>
 		</b-container>
 	
@@ -44,7 +38,7 @@ export default {
 				{
 					id:1,
 					quantity:1,
-					name: 'Harry Potter and Philosophers Stone',
+					name: 'Harry Potter and Philosophers Stone vol. 1',
 					price:15.69,
 					img: '@/assets/books/book1.jpg',
 					cart:false
@@ -52,7 +46,7 @@ export default {
 				{
 					id:2,
 					quantity:1,
-					name: 'Harry Potter and Chamber of Secrets',
+					name: 'Harry Potter and Chamber of Secrets vol. 2',
 					price:17.99,
 					img: '@/assets/books/book1.jpg',
 					cart:false
@@ -60,7 +54,7 @@ export default {
 				{
 					id:3,
 					quantity:1,
-					name: 'Harry Potter and Prisoner of Azkaban',
+					name: 'Harry Potter and Prisoner of Azkaban vol. 3',
 					price:18.09,
 					img: '@/assets/books/book1.jpg',
 					cart:false
@@ -68,7 +62,7 @@ export default {
 				{
 					id:4,
 					quantity:1,
-					name: 'Harry Potter and Goblet of Fire',
+					name: 'Harry Potter and Goblet of Fire vol. 4',
 					price:17.59,
 					img: '@/assets/books/book1.jpg',
 					cart:false
@@ -76,7 +70,7 @@ export default {
 				{
 					id:5,
 					quantity:1,
-					name: 'Harry Potter and Order of the Phoenix',
+					name: 'Harry Potter and Order of the Phoenix vol. 5',
 					price:19.99,
 					img: '@/assets/books/book1.jpg',
 					cart:false
@@ -84,7 +78,7 @@ export default {
 				{
 					id:6,
 					quantity:1,
-					name: 'Harry Potter and Half-Blood Prince',
+					name: 'Harry Potter and Half-Blood Prince vol. 6',
 					price:16.79,
 					img: '@/assets/books/book1.jpg',
 					cart:false
@@ -92,7 +86,7 @@ export default {
 				{
 					id:7,
 					quantity:1,
-					name: 'Harry Potter and Deathly Hallows',
+					name: 'Harry Potter and Deathly Hallows vol. 7',
 					price:21.89,
 					img: '@/assets/books/book1.jpg',
 					cart:false
@@ -100,7 +94,7 @@ export default {
 				{
 					id:8,
 					quantity:1,
-					name: 'Harry Potter and the Cursed Child',
+					name: 'Harry Potter and the Cursed Child vol. 8',
 					price:15.69,
 					img: '@/assets/books/book8.jpg',
 					cart:false

@@ -1,9 +1,6 @@
 <template>
   <div>
 <navbar />
-
-
-
     <div class="container">
     <br/>
     <div class="row justify-content-center">
@@ -84,7 +81,7 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            alert(`You are logged in as ${user.email}`);
+            alert(`You are logged`);
             this.$router.go({ path: this.$router.path });
           },
           err => {
@@ -104,41 +101,6 @@ export default {
           alert('Error logging ..'+ err.message)
           });
     },
-    /*
-        async logInWithFacebook() {
-      await this.loadFacebookSDK(document, "script", "facebook-jssdk");
-      await this.initFacebook();
-      window.FB.login(function(response) {
-        if (response.authResponse) {
-          alert("You are logged in &amp; cookie set!");
-          // Now you can redirect the user or do an AJAX request to
-          // a PHP script that grabs the signed request from the cookie.
-        } else {
-          alert("User cancelled login or did not fully authorize.");
-        }
-      });
-      return false;
-    },
-    async initFacebook() {
-      window.fbAsyncInit = function() {
-        window.FB.init({
-          appId: "3-090-9", //You will need to change this
-          cookie: true, // This is important, it's not enabled by default
-          version: "v13.0"
-        });
-      };
-    },
-    async loadFacebookSDK(d, s, id) {
-      var js,
-        fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {
-        return;
-      }
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    } */
     socialLoginFacebook(){
       const provider = new firebase.auth.FacebookAuthProvider();
       provider.setCustomParameters({
@@ -149,7 +111,7 @@ export default {
           const user = result.user;
           const credential = FacebookAuthProvider.credentialFromResult(result);
           const accessToken = credential.accessToken;
-          alert('Użytkownik zalogowany poprzez konto facebook !')
+          alert('successfully logged in with facebook account !')
           this.$router.push('/')
       })
       .catch(err => {

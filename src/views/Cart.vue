@@ -18,7 +18,7 @@
         {{ data.index+1 }}
         </template>
         <template v-slot:cell(price)="data">
-        {{ (data.item.price * data.item.quantity).toFixed(2) }} $
+        {{ (data.item.price * data.item.quantity).toFixed(2) }} zł
         </template>
         <template v-slot:cell(remove)="data">
         <b-button @click="remove(data.item.id)" variant="danger" class="mr-2">
@@ -57,7 +57,7 @@
     <b-col></b-col>
     <b-col></b-col>
     <b-col><h3>Total</h3></b-col>
-    <b-col><h3>{{total.toFixed(2)}} $ </h3></b-col>
+    <b-col><h3>{{total.toFixed(2)}} zł </h3></b-col>
 </b-row>
 <b-row class="mt-4 text-center" v-if="cart.length > 0">
     <b-col>
@@ -66,7 +66,6 @@
         </b-button>
     </b-col>
 <b-col></b-col>
-<!-- <b-col cols="4"> Aplikacja </b-col> -->
 
 <b-col>
 
@@ -92,14 +91,14 @@ Product name: {{productFinal.name}}
 Quantity: {{productFinal.quantity}}
 </li>
 <li>
-Price: {{productFinal.price.toFixed(2)}} $
+Price: {{productFinal.price.toFixed(2)}} zł
 </li>
 <li>
-Total: {{ (productFinal.price * productFinal.quantity).toFixed(2)}} $
+Total: {{ (productFinal.price * productFinal.quantity).toFixed(2)}} zł
 </li>
 <hr>
 </ul>
-<h2 class="my-4 text-center">Total: {{ ticket.total.toFixed(2)}} $</h2>
+<h2 class="my-4 text-center">Total: {{ ticket.total.toFixed(2)}} zł </h2>
 
 
 </b-modal>
@@ -139,6 +138,9 @@ export default {
             }
             localStorage.setItem('products',JSON.stringify(this.cart))
             this.$refs['modal-1'].hide()
+            if(navigator){
+			navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100])
+			}
         },
         remove(id){
 

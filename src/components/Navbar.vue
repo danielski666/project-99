@@ -77,30 +77,8 @@
 
 <script>
 import firebase from 'firebase/compat/app';
-//import { inject } from 'vue';
-export default {
-	/*
-	inject: ['messaging'],
-  //composition api
-  setup() {
-	  app.messaging().getToken({ vapidKey:  'BC9E9EweLWoSortR7kVMtqCwYb58uN-AoGBpWZaW1qUL4YlgECl8tFqItm_00FhaVv2o9OXJTR_Gtn4EwWcx2RA' })
-.then((currentToken) => {
-  if (currentToken) {
-    console.log('client token', currentToken)
-  } else {
-    console.log('No registration token available. Request permission to generate one.');
-  }
-}).catch((err) => {
-  console.log('An error occurred while retrieving token. ', err);
-})
 
-    const messaging = inject('messaging')
-	messaging.getToken({ vapidKey:' BC9E9EweLWoSortR7kVMtqCwYb58uN-AoGBpWZaW1qUL4YlgECl8tFqItm_00FhaVv2o9OXJTR_Gtn4EwWcx2RA' })
-    console.log('Firebase cloud messaging object', messaging)
-  },
-  mounted () {
-    console.log('Firebase cloud messaging object', this.$messaging)
-  },*/
+export default {
 	data() {
 		return {
 			isLoggedIn: false,
@@ -116,7 +94,7 @@ export default {
 		if (firebase.auth().currentUser) {
       		this.isLoggedIn = true;
       		this.currentUser = firebase.auth().currentUser.email;
-    	};
+    	}
 		if(JSON.parse(localStorage.getItem('products'))) {
 			this.cart = JSON.parse(localStorage.getItem('products'))
 		} else {
@@ -145,13 +123,13 @@ export default {
 			this.$router.push('/')
 		},
 		gotochat(){
-			this.$router.push('/realtime')
+			this.$router.push('/realTimeChat')
 		},
 		flashlightFunc(){
 const SUPPORTS_MEDIA_DEVICES = 'mediaDevices' in navigator;
 
 if (SUPPORTS_MEDIA_DEVICES) {
-  //Get the environment camera (usually the second one)
+  
   navigator.mediaDevices.enumerateDevices().then(devices => {
   
     const cameras = devices.filter((device) => device.kind === 'videoinput');
@@ -161,7 +139,7 @@ if (SUPPORTS_MEDIA_DEVICES) {
     }
     const camera = cameras[cameras.length - 1];
 
-    // Create stream and get video track
+   
     navigator.mediaDevices.getUserMedia({
       video: {
         deviceId: camera.deviceId,
@@ -172,13 +150,10 @@ if (SUPPORTS_MEDIA_DEVICES) {
     }).then(stream => {
       const track = stream.getVideoTracks()[0];
 
-      //Create image capture object and get camera capabilities
+      
       const imageCapture = new ImageCapture(track)
       const photoCapabilities = imageCapture.getPhotoCapabilities().then(() => {
 
-        //todo: check if camera has a torch
-
-        //let there be light!
         const btn = document.querySelector('.switch');
         btn.addEventListener('click', function(){
           track.applyConstraints({
@@ -188,10 +163,6 @@ if (SUPPORTS_MEDIA_DEVICES) {
       });
     });
   });
-  
-  //The light will be on as long the track exists
-  
-  
 }				
 		},
 		onSubmit(e){

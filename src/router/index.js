@@ -5,7 +5,7 @@ import Cart from '../views/Cart.vue'
 import Admin from '../views/Admin.vue'
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
-import RealTime from '../views/realtime.vue';
+import RealTimeChat from '../views/RealTimeChat.vue';
 import firebase from 'firebase/compat/app';
 Vue.use(VueRouter)
 
@@ -51,9 +51,9 @@ const routes = [
       }
   },
   {
-    path: '/realTime',
-    name: 'realTime',
-    component: RealTime,
+    path: '/realTimeChat',
+    name: 'realTimeChat',
+    component: RealTimeChat,
     meta: {
         requiresAuth: true
       }
@@ -97,10 +97,10 @@ router.beforeEach((to, from, next) => {
       // Proceed to route
       next();
     }
-  } else {
+  } //else {
     // Proceed to route
-    next();
-  }
+    //next();
+  //}
 });
 
 
