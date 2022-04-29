@@ -6,7 +6,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import {BootstrapVue} from 'bootstrap-vue'
 import { BootstrapIconsPlugin } from 'bootstrap-icons-vue';
 import firebase from 'firebase/compat/app';
-
+import './components/Foot.vue';
 
 import 'leaflet/dist/leaflet.css';
 

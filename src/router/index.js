@@ -15,7 +15,7 @@ const routes = [
     name: 'home',
     component: Home,
     meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
   },
   {
@@ -97,10 +97,10 @@ router.beforeEach((to, from, next) => {
       // Proceed to route
       next();
     }
-  } //else {
+  } else {
     // Proceed to route
-    //next();
-  //}
+    next();
+  }
 });
 
 

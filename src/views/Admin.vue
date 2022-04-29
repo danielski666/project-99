@@ -7,14 +7,14 @@
 						<h5>Id: {{ data.item.id.substring(0,9)}}</h5>
 						<ul v-for="(product, index) in data.item.products" :key="index">
 							<li>Name: {{ product.name }}</li>
-							<li>Price: {{ product.price }} $</li>
+							<li>Price: {{ product.price }} zł</li>
 							<li>Quantity: {{ product.quantity }}</li>
 							
 							<hr />
 						</ul>
 					</template>
 					<template v-slot:cell(total)="data">
-						<h2>$ {{ data.item.total }}</h2>
+						<h2>zł {{ data.item.total }}</h2>
 					</template>
 					<template v-slot:cell(delete)="data">
 						<b-button @click="deletesale(data.item.id)" block class="mt-4" style="top:50%!important;" size="lg" variant="danger">Delete Sale</b-button>

@@ -1,4 +1,4 @@
-# READ:ME
+# readme
 
 ## Project setup
 ```
