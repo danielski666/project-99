@@ -3,7 +3,7 @@
 		<b-navbar toggleable="lg" type="dark" variant="success">
 			<b-navbar-brand @click="goHome" href="#">
 				<!-- <b-icon-brightness-fill-high></b-icon-brightness-fill-high> -->
-				README</b-navbar-brand>
+				Ecommerce</b-navbar-brand>
 			
 			<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 			

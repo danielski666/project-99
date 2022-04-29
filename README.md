@@ -1,4 +1,4 @@
-# README
+# ecommercevuefirestore
 
 ## Project setup
 ```

@@ -142,4 +142,13 @@ input {
   padding-left: 2px;
   padding-right: 2px;
 }
+.card {
+  width: 100%;
+  height: 75vh;
+  margin: auto;
+}
+.card-body {
+  min-height: 50vh;
+  overflow-x: scroll;
+}
 </style>

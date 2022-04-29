@@ -4,7 +4,7 @@
 		<b-container fluid>
 		
 		<b-row >
-			<b-col sm="12" md="3" v-for="(book,index) in books" :key="index">
+			<b-col sm="12" md="2" v-for="(book,index) in books" :key="index">
 				<b-card
 					:title=book.name
 					:img-src="require(`@/assets/img/books/book${index+1}.jpg`)"
@@ -12,6 +12,7 @@
 					tag="article"
 					img-top
 					class="mb-4"
+					style="max-width: 12rem;"
 					>
 					<b-card-text>
 						<h5>Price: {{book.price}} zł</h5>
@@ -37,64 +38,64 @@ export default {
 				{
 					id:1,
 					quantity:1,
-					name: 'Harry Potter i Kamień Filozoficzny',
-					price:16.22,
+					name: 'Harry Potter and Philosophers Stone vol. 1',
+					price:15.69,
 					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:2,
 					quantity:1,
-					name: 'Harry Potter i Komnata Tajemnic',
-					price:17.31,
-					img: '@/assets/books/book2.jpg',
+					name: 'Harry Potter and Chamber of Secrets vol. 2',
+					price:17.99,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:3,
 					quantity:1,
-					name: 'Harry Potter i Więzień Azkabanu',
-					price:17.21,
-					img: '@/assets/books/book3.jpg',
+					name: 'Harry Potter and Prisoner of Azkaban vol. 3',
+					price:18.09,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:4,
 					quantity:1,
-					name: 'Harry Potter i Czara Ognia',
-					price:16.80,
-					img: '@/assets/books/book4.jpg',
+					name: 'Harry Potter and Goblet of Fire vol. 4',
+					price:17.59,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:5,
 					quantity:1,
-					name: 'Harry Potter i Zakon Feniksa',
-					price:15.90,
-					img: '@/assets/books/book5.jpg',
+					name: 'Harry Potter and Order of the Phoenix vol. 5',
+					price:19.99,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:6,
 					quantity:1,
-					name: 'Harry Potter i Książe Półkrwi',
-					price:21.21,
-					img: '@/assets/books/book6.jpg',
+					name: 'Harry Potter and Half-Blood Prince vol. 6',
+					price:16.79,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:7,
 					quantity:1,
-					name: 'Harry Potter i Insygnia Śmierci',
-					price:18.23,
-					img: '@/assets/books/book7.jpg',
+					name: 'Harry Potter and Deathly Hallows vol. 7',
+					price:21.89,
+					img: '@/assets/books/book1.jpg',
 					cart:false
 				},
 				{
 					id:8,
 					quantity:1,
-					name: 'Harry Potter i Przeklęte Dziecko',
-					price:18.92,
+					name: 'Harry Potter and the Cursed Child vol. 8',
+					price:15.69,
 					img: '@/assets/books/book8.jpg',
 					cart:false
 				},
