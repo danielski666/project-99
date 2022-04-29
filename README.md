@@ -1,4 +1,4 @@
-# ecommercevuefirestore
+# RED:ME
 
 ## Project setup
 ```
