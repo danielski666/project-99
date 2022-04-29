@@ -1,4 +1,4 @@
-# RED:ME
+# README
 
 ## Project setup
 ```
